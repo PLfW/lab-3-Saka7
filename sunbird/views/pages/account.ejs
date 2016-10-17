@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+  <style>
+    .user-details .image img {
+      max-width: 240px;
+      max-height: 240px;
+    }
+    .info span {
+      padding: 8px;
+      margin: 4px;
+      display: block;
+      border-bottom: 1px solid grey;
+    }
+
+    .info span#bio {
+      text-align: justify;
+    }
+  </style>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/admin-nav %>
+    <% include ../partials/nav %>
+
+    <main>
+      <div class="card user-details">
+        <div class="image">
+          <img src="http://simpleicon.com/wp-content/uploads/user1.png" alt="No Image" />
+        </div>
+        <div class="info">
+          <span>Ivan</span>
+          <span>Ivanov</span>
+          <span>ivan.ivanov@mail.ru</span>
+          <span>0966660606</span>
+          <span id="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem eius alias, ipsam, incidunt a sequi officiis, consequuntur facilis similique accusantium praesentium nam enim! Iste accusamus sapiente nihil itaque sequi placeat quisquam, possimus repellendus quo natus at, distinctio minima ut eaque. Obcaecati ad ducimus blanditiis, porro distinctio eos quo, similique ex!</span>
+        </div>
+      </div>
+      <div class="new-destinations">
+        <form action="">
+          <label for="first-name">First Name</label>
+          <input id="first-name" type="text" placeholder="Enter first name" />
+          <label for="second-name">Second Name</label>
+          <input id="second-name" type="text" placeholder="Enter second name" />
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Enter email" />
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter password" />
+          <label for="confirm-password">Confirm Password</label>
+          <input id="confirm-password" type="password" placeholder="Confirm password" />
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="number" placeholder="Enter phone Number" />
+          <label for="image">Image</label>
+          <input id="image" type="file" />
+          <label for="bio">Bio</label> 
+          <textarea id="bio" placeholder="Enter bio"></textarea>
+          <div class="controls">
+            <button>Cancel</button>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>

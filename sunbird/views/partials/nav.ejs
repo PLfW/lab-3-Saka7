@@ -1,0 +1,23 @@
+<nav class="navigation">
+  <ul>
+    <% if (!isAuthorized) {%>
+      <% if (page != "login") { %>
+        <li><a href="/login">Log In</a></li>
+      <% } %>
+      <% if (page != "signup") { %>
+        <li><a href="/signup">Sign Up</a></li>
+      <% } %>
+    <% } else { %>
+      <li><a href="/logout">Log Out</a></li>
+    <% } %>
+    <%if (page != "account") { %>
+      <li><a href="/account">Account</a></li>
+    <% } %>
+    <%if (page != "flights") { %>
+      <li><a href="/flights">Flights</a></li>
+    <% } %>
+    <%if (page != "orders") { %>
+      <li><a href="/orders">Orders</a></li>
+    <% } %>
+  </ul>
+</nav>

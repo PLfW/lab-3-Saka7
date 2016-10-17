@@ -1,0 +1,24 @@
+{
+  "name": "sunbird",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "nodemon bin/www",
+    "init_db": "./db/init_db.sh"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.5.2",
+    "express": "~4.13.4",
+    "jsonwebtoken": "^7.1.9",
+    "morgan": "~1.7.0",
+    "nconf": "^0.8.4",
+    "password-hash": "^1.2.2",
+    "pg-promise": "^5.3.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

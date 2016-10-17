@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/sidebar %>
+    <% include ../partials/nav %>
+
+    <main>
+      <h1>Sign Up</h1>
+      <form action="">
+        <label for="email">Email*</label>
+        <input id="email" type="email" required="true" placeholder="Enter your email" />
+        <label for="first-name">First Name*</label>
+        <input id="first-name" type="text" required="true" placeholder="Enter your first name" />
+        <label for="second-name">Second Name</label>
+        <input id="second-name" type="text" placeholder="Enter your second name" />
+        <label for="phone">Phone</label>
+        <input id="phone" type="numher" placeholder="Enter your phone number" />
+        <label for="password">Password*</label>
+        <input id="password" type="password" required="true" placeholder="Enter password" />
+        <label for="confirm-password">Confirm Password*</label>
+        <input id="password" type="password" required="true" placeholder="Confirm your password" />
+        <div class="controls">
+          <button>Cancel</button>
+          <button>Submit</button>
+        </div>
+      </form>
+    </main>
+    
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>

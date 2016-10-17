@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/sidebar %>
+    <% include ../partials/nav %>
+
+    <main>
+      <h1>Log In</h1>
+      <form action="">
+        <label for="email-username">Email or Username</label>
+        <input id="email-username" type="text" required="true" placeholder="Enter your email or usrename" />
+        <label for="password">Password</label>
+        <input id="password" type="password" required="true" placeholder="Enter your password" />
+        <div class="controls">
+          <button>Cancel</button>
+          <button>Submit</button>
+        </div>
+      </form>
+    </main>
+    
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>

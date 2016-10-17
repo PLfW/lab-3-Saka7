@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/admin-nav %>
+    <% include ../partials/nav %>
+
+    <main>
+      <div class="table orders">
+        <table>
+          <caption>Orders</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Flight</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Departure</th>
+              <th>Price</th>
+              <th>Pay</th>
+              <th>Reject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Random</td>
+              <td>Ukraine/Kiev</td>
+              <td>USA/San Francisco</td>
+              <td>2016/09/11 10:45:00</td>
+              <td>200.5$</td>
+              <td><button id="pay">Pay</button></td>
+              <td><button id="reject">Reject</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Random</td>
+              <td>Ukraine/Kiev</td>
+              <td>USA/San Francisco</td>
+              <td>2016/09/11 10:45:00</td>
+              <td>200.5$</td>
+              <td><button id="pay">Pay</button></td>
+              <td><button id="reject">Reject</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>

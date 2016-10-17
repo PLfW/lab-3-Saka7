@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/admin-nav %>
+    <% include ../partials/nav %>
+
+    <main>
+      <div class="new-destinations">
+        <form action="">
+          <label for="first-name">First Name</label>
+          <input id="first-name" type="text" placeholder="Enter first name" />
+          <label for="second-name">Second Name</label>
+          <input id="second-name" type="text" placeholder="Enter second name" />
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Enter email" />
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter password" />
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="number" placeholder="Enter phone Number" />
+          <label for="image">Image</label>
+          <input id="image" type="file" />
+          <label for="bio">Bio</label> 
+          <textarea id="bio" placeholder="Enter bio"></textarea>
+          <div class="controls">
+            <button>Cancel</button>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="table users">
+        <table>
+          <caption>Users</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Image</th>
+              <th>First Name</th>
+              <th>Second Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>
+                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="No Image" />
+              </td>
+              <td>Ivan</td>
+              <td>Ivanov</td>
+              <td>ivan.ivanov@mail.ru</td>
+              <td>0966660606</td>
+              <td><button id="edit">Edit</button></td>
+              <td><button id="remove">Remove</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>
+                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="No Image" />
+              </td>
+              <td>Ivan</td>
+              <td>Ivanov</td>
+              <td>ivan.ivanov@mail.ru</td>
+              <td>0966660606</td>
+              <td><button id="edit">Edit</button></td>
+              <td><button id="remove">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>

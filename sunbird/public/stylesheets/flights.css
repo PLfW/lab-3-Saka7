@@ -1,0 +1,59 @@
+.card {
+  transition: all 0.2s ease-in;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: all 0.2s ease-in;
+}
+
+.flights .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.flights .card .info {
+  display: flex;
+  flex-direction: row;
+}
+
+.flights .card .info .image img {
+  max-width: 240px;
+  max-height: 240px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.flights table {
+  width: auto;
+}
+
+.flights table tr td {
+  text-align: left;
+  padding: 0 8px;
+}
+
+.flights .description {
+  margin-top: 10px;
+  text-align: justify;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.flights .description h1 {
+  font-size: 1.5rem;
+}
+
+#name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.price {
+  color: orange;
+  font-size: 1.2rem;
+  font-weight: bold;
+}

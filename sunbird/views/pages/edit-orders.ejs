@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+<body>
+  
+  <% include ../partials/header %>
+
+  <div class="container">
+
+    <% include ../partials/admin-nav %>
+    <% include ../partials/nav %>
+
+    <main>
+      <div class="new-destinations">
+        <form action="">
+          <label for="id">ID</label>
+          <input id="id" type="number" placeholder="Enter id" />
+          <label for="user-id">User ID</label>
+          <input id="user-id" type="number" placeholder="Enter user id" />
+          <label for="flight-id">Flight ID</label>
+          <input id="flight-id" type="number" placeholder="Enter flight id" />
+          <label for="applying-time">Applying Time</label>
+          <input id="applying-time" type="date" />
+          <label for="paying-time">Paying Time</label>
+          <input id="paying-time" type="date" />
+          <label for="is-paid">Is Paid</label>
+          <input id="is-paid" type="checkbox" />
+          <label for="is-rejected">Is Rejected</label>
+          <input id="is-rejected" type="checkbox" />
+
+          <div class="controls">
+            <button>Cancel</button>
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="table orders">
+        <table>
+          <caption>Orders</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Flight ID</th>
+              <th>Applying Time</th>
+              <th>Paying Time</th>
+              <th>Is Paid</th>
+              <th>Is Rejected</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>4</td>
+              <td>2016/09/10</td>
+              <td>2016/09/11</td>
+              <td>yes</td>
+              <td>no</td>
+              <td><button id="edit">Edit</button></td>
+              <td><button id="remove">Remove</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>4</td>
+              <td>2016/09/10</td>
+              <td>2016/09/11</td>
+              <td>yes</td>
+              <td>no</td>
+              <td><button id="edit">Edit</button></td>
+              <td><button id="remove">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+  <% include ../partials/footer %>
+
+</body>
+</html>
