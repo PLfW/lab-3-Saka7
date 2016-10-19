@@ -15,8 +15,28 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/verbose', (req, res) => {
+  flightRepository.findAll({withDestinations: true})
+    .then(flights => {
+      res.json(flights);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
 router.get('/:id(\\d+)', (req, res) => {
   flightRepository.findOne(req.params.id)
+   .then(flight => {
+      res.json(flight);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
+router.get('/:id(\\d+)/verbose', (req, res) => {
+  flightRepository.findOne(req.params.id, {withDestinations: true})
    .then(flight => {
       res.json(flight);
     })

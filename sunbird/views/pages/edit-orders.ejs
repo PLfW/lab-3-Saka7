@@ -14,28 +14,28 @@
     <main>
       <div class="new-destinations">
         <form action="">
-          <label for="id">ID</label>
-          <input id="id" type="number" placeholder="Enter id" />
           <label for="user-id">User ID</label>
           <input id="user-id" type="number" placeholder="Enter user id" />
           <label for="flight-id">Flight ID</label>
           <input id="flight-id" type="number" placeholder="Enter flight id" />
           <label for="applying-time">Applying Time</label>
-          <input id="applying-time" type="date" />
+          <input id="applying-time" type="datetime" />
           <label for="paying-time">Paying Time</label>
-          <input id="paying-time" type="date" />
+          <input id="paying-time" type="datetime" />
+          <label for="rejection-time">Rejection Time</label>
+          <input id="rejection-time" type="datetime" />
           <label for="is-paid">Is Paid</label>
           <input id="is-paid" type="checkbox" />
           <label for="is-rejected">Is Rejected</label>
           <input id="is-rejected" type="checkbox" />
 
           <div class="controls">
-            <button>Cancel</button>
-            <button>Submit</button>
+            <button id="cancel">Cancel</button>
+            <button id="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table orders">
+      <div class="table" id="orders">
         <table>
           <caption>Orders</caption>
           <thead>
@@ -45,6 +45,7 @@
               <th>Flight ID</th>
               <th>Applying Time</th>
               <th>Paying Time</th>
+              <th>Rejection Time</th>
               <th>Is Paid</th>
               <th>Is Rejected</th>
               <th>Edit</th>
@@ -52,35 +53,31 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>4</td>
-              <td>2016/09/10</td>
-              <td>2016/09/11</td>
-              <td>yes</td>
-              <td>no</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>4</td>
-              <td>2016/09/10</td>
-              <td>2016/09/11</td>
-              <td>yes</td>
-              <td>no</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
+            <% for(let order of orders) { %>
+              <tr>
+                <td><%= order.id %></td>
+                <td><%= order.user_id %></td>
+                <td><%= order.flight_id %></td>
+                <td><%= order.applying_time %></td>
+                <td><%= order.paying_time %></td>
+                <td><%= order.rejection_time %></td>
+                <td><%= order.is_paid %></td>
+                <td><%= order.is_rejected %></td>
+                <td><button class="edit">Edit</button></td>
+                <td><button class="remove">Remove</button></td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
     </main>
 
   </div>
+
   <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+
+  <script src="javascripts/orders.js"></script>
 
 </body>
 </html>

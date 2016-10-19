@@ -60,8 +60,8 @@ class UserRepository {
     return db.tx(transaction => {
       return transaction.none(this.INSERT, [
         user.type || "CUSTOMER",
-        user.firstName || "____",
-        user.secondName || "____",
+        user.first_name || "____",
+        user.second_name || "____",
         user.email || "_______",
         user.password || "******",
         user.phone || "__________",
@@ -78,8 +78,8 @@ class UserRepository {
       return db.none(this.UPDATE, [
         id,
         user.type || "CUSTOMER",
-        user.firstName || "____",
-        user.secondName || "____",
+        user.first_name || "____",
+        user.second_name || "____",
         user.email || "_______",
         user.password || "******",
         user.phone || "__________",

@@ -7,6 +7,7 @@
     .controls form {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
 
     label, select, span, button {
@@ -22,59 +23,59 @@
     <% include ../partials/sidebar %>
     <% include ../partials/nav %>
 
-    <main>
+    <main id="flight">
       <div class="flights">
         <div class="card">
           <div class="info">
             <div class="image">
-              <img src="http://luminous-landscape.com/wp-content/uploads/2015/08/LuLa_Tibet-21.jpg" alt="No image" />
+              <img v-bind:src="flight.image" alt="No image" />
             </div>
             <table class="details">
               <tr>
                 <td>Name</td>
-                <td id="name">Tibet</td>
+                <td id="name">{{ flight.name }}</td>
               </tr>
               <tr>
                 <td>From</td>
-                <td id="from">Ukraine/Kiev</td>
+                <td id="from">{{ flight.from }}</td>
               </tr>
               <tr>
                 <td>To</td>
-                <td id="to">China/Tibet</td> 
+                <td id="to">{{ flight.to }}</td> 
               </tr>
               <tr>
                 <td>Expiration Date</td>
-                <td id="expiration-date">2016/12/01</td>
+                <td id="expiration-date">{{ flight.expiration_date }}</td>
               </tr>
               <tr>
                 <td>Departure Date</td>
-                <td id="departure-date">2016/12/01</td>
+                <td id="departure-date">{{ flight.departure }}</td>
               </tr>
               <tr>
                 <td>Duration</td>
-                <td id="duration">10 hours</td>
+                <td id="duration">{{ flight.duration }} hours</td>
               </tr>
               <tr>
                 <td>Price</td>
-                <td class="price">200USD</td>
+                <td class="price">{{flight.price}}USD</td>
               </tr>
             </table>
           </div>
           <div class="description">
             <h1>Description</h1>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, id reprehenderit at error aut, est, ipsa similique in dolorem laboriosam fugiat accusantium enim minus odit a impedit officia suscipit. Maxime labore possimus inventore quasi porro eaque officiis, voluptatibus ipsam aut. Voluptate ratione natus consequatur obcaecati voluptates fuga sit maxime necessitatibus pariatur, tenetur, vitae veniam odio id iusto nostrum quam nihil blanditiis neque incidunt eum, beatae repellendus consequuntur perferendis. Incidunt quibusdam fugiat dolorum aliquam repellendus dolorem hic amet, facilis soluta ad. Excepturi repellendus cum dicta. Quibusdam beatae mollitia esse dolorem modi, dicta, voluptatibus pariatur perferendis vero delectus eveniet necessitatibus. Repellat, veritatis.
+            {{ flight.description }}
           </div>
           
           <div class="controls">
-            <form action="">
+            <form onsubmit="return false">
               <label for="payment">Choose Payment System</label>
-              <select id="payment">
+              <select id="payment" v-model="payment">
                 <option value="paypal">Paypal</option>
                 <option value="stripe">Stripe</option>
                 <option value="bank">Local Bank</option>
               </select>
-              <span class="price">200USD</span>
-              <button id="apply">Apply</button>
+              <span class="price">{{flight.price}}USD</span>
+              <button id="apply" v-on:click="apply">Apply</button>
             </form>
           </div>
 
@@ -85,6 +86,9 @@
 
   </div>
   <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+
+  <script src="javascripts/flight.js"></script>
 
 </body>
 </html>

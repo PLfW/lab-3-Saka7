@@ -33,12 +33,12 @@
           <label for="description">Description</label>
           <textarea id="description"></textarea>
           <div class="controls">
-            <button>Cancel</button>
-            <button>Submit</button>
+            <button id="cancel">Cancel</button>
+            <button id="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table flights">
+      <div class="table" id="flights">
         <table>
           <caption>Flights</caption>
           <thead>
@@ -56,34 +56,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>
-                <img src="http://www.clipartbest.com/cliparts/pi5/Mqj/pi5MqjLrT.png" alt="No Image" />
-              </td>
-              <td>Random</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2016/10/12</td>
-              <td>2016/10/12 10:45:00</td>
-              <td>200.5$</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>
-                <img src="http://www.clipartbest.com/cliparts/pi5/Mqj/pi5MqjLrT.png" alt="No Image" />
-              </td>
-              <td>Random</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2016/10/12</td>
-              <td>2016/10/12 10:45:00</td>
-              <td>200.5$</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
+            <% for(let flight of flights) { %>
+              <tr>
+                <td><%= flight.id %></td>
+                <td>
+                  <img src="<%= flight.image %>" alt="No Image" />
+                </td>
+                <td><%= flight.name %></td>
+                <td><%= flight.from_point %></td>
+                <td><%= flight.to_point %></td>
+                <td><%= flight.expiration_date %></td>
+                <td><%= flight.departure %></td>
+                <td><%= flight.price %>$</td>
+                <td><button class="edit">Edit</button></td>
+                <td><button class="remove">Remove</button></td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
@@ -91,6 +79,9 @@
 
   </div>
   <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+
+  <script src="javascripts/flights.js"></script>
 
 </body>
 </html>

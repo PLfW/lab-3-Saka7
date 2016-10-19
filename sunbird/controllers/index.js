@@ -1,11 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+const DestinationRepository = require('../repositories/destination.repository');
+const OrderRepository = require('../repositories/order.repository.js');
+const UserRepository = require('../repositories/user.repository');
+const FlightRepository = require('../repositories/flight.repository');
+
+const destinationRepository = new DestinationRepository();
+const userRepository = new UserRepository();
+const orderRepository = new OrderRepository();
+const flightRepository = new FlightRepository();
+
 router.get('/', (req, res, next) => {
-  res.render('pages/index', {
-    page: "index",
-    isAuthorized: false
-  });
+  res.redirect('/flights');
 });
 
 router.get('/login', (req, res, next) => {
@@ -47,7 +54,7 @@ router.get('/flights', (req, res, next) => {
   });
 });
 
-router.get('/flights?:id(\\d)', (req, res, next) => {
+router.get('/flight?:id', (req, res, next) => {
   res.render('pages/flight', {
     page: "flight",
     isAuthorized: false
@@ -55,30 +62,42 @@ router.get('/flights?:id(\\d)', (req, res, next) => {
 });
 
 router.get('/edit-users', (req, res, next) => {
-  res.render('pages/edit-users', {
-    page: "edit-users",
-    isAuthorized: false
+  userRepository.findAll().then(users => {
+    res.render('pages/edit-users', {
+      "users": users,
+      page: "edit-users",
+      isAuthorized: false
+    });
   });
 });
 
 router.get('/edit-destinations', (req, res, next) => {
-  res.render('pages/edit-destinations', {
-    page: "edit-destinations",
-    isAuthorized: false
+  destinationRepository.findAll().then(destinations => {
+    res.render('pages/edit-destinations', {
+      "destinations": destinations,
+      page: "edit-destinations",
+      isAuthorized: false,
+    });
   });
 });
 
 router.get('/edit-flights', (req, res, next) => {
-  res.render('pages/edit-flights', {
-    page: "edit-flights",
-    isAuthorized: false
+  flightRepository.findAll().then(flights => {
+    res.render('pages/edit-flights', {
+      "flights": flights,
+      page: "edit-flights",
+      isAuthorized: false
+    });
   });
 });
 
 router.get('/edit-orders', (req, res, next) => {
-  res.render('pages/edit-orders', {
-    page: "edit-orders",
-    isAuthorized: false
+  orderRepository.findAll().then(orders => {
+    res.render('pages/edit-orders', {
+      "orders": orders,
+      page: "edit-orders",
+      isAuthorized: false
+    });
   });
 })
 

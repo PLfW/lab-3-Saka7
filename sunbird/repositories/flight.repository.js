@@ -7,11 +7,45 @@ class FlightRepository {
       FROM flights 
       WHERE id = $1;`;
 
+    this.FIND_BY_ID_WITH_DESTINATIONS = 
+       `SELECT 
+        f.id,
+        f.name,
+        f.image,
+        df.country || ' ' || df.city AS "from",
+        dt.country || ' ' || dt.city AS "to",
+        f.expiration_date,
+        f.departure,
+        f.duration,
+        f.price,
+        f.description
+      FROM flights AS f
+      JOIN destinations AS df ON f.from_point = df.id
+      JOIN destinations AS dt ON f.to_point = dt.id
+      WHERE f.id = $1`;
+
     this.FIND_BY_NAME = `SELECT * 
       FROM flights 
       WHERE name = $1;`;
 
     this.FIND_ALL = `SELECT * FROM flights;`; 
+
+    this.FIND_ALL_WITH_DESTINATIONS = `
+      SELECT 
+        f.id,
+        f.name,
+        f.image,
+        df.country || ' ' || df.city AS "from",
+        dt.country || ' ' || dt.city AS "to",
+        f.expiration_date,
+        f.departure,
+        f.duration,
+        f.price,
+        f.description
+      FROM flights AS f
+      JOIN destinations AS df ON f.from_point = df.id
+      JOIN destinations AS dt ON f.to_point = dt.id
+      ORDER BY f.expiration_date`;
    
     this.INSERT = `INSERT INTO flights(name, image, description, 
         fromPoint, toPoint, expirationDate, departure, duration, price)
@@ -37,12 +71,20 @@ class FlightRepository {
       WHERE id = $1;`;
   }
 
-  findAll() {
-    return db.any(this.FIND_ALL);
+  findAll(options) {
+    if(!!options && options.withDestinations) {
+      return db.any(this.FIND_ALL_WITH_DESTINATIONS);
+    } else {
+      return db.any(this.FIND_ALL);
+    }
   }
 
-  findOne(id) {
-    return db.any(this.FIND_BY_ID, id);
+  findOne(id, options) {
+    if(!!options && options.withDestinations) {
+      return db.any(this.FIND_BY_ID_WITH_DESTINATIONS, id);
+    } else {
+      return db.any(this.FIND_BY_ID, id);
+    }
   }
 
   findByName(name) {

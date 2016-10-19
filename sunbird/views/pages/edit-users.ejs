@@ -13,7 +13,7 @@
 
     <main>
       <div class="new-destinations">
-        <form action="">
+        <form onsubmit="false">
           <label for="first-name">First Name</label>
           <input id="first-name" type="text" placeholder="Enter first name" />
           <label for="second-name">Second Name</label>
@@ -23,18 +23,18 @@
           <label for="password">Password</label>
           <input id="password" type="password" placeholder="Enter password" />
           <label for="phone">Phone Number</label>
-          <input id="phone" type="number" placeholder="Enter phone Number" />
+          <input id="phone" type="text" placeholder="Enter phone Number" />
           <label for="image">Image</label>
           <input id="image" type="file" />
           <label for="bio">Bio</label> 
           <textarea id="bio" placeholder="Enter bio"></textarea>
           <div class="controls">
-            <button>Cancel</button>
-            <button>Submit</button>
+            <button id="cancel">Cancel</button>
+            <button id="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table users">
+      <div class="table" id="users">
         <table>
           <caption>Users</caption>
           <thead>
@@ -50,37 +50,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>
-                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="No Image" />
-              </td>
-              <td>Ivan</td>
-              <td>Ivanov</td>
-              <td>ivan.ivanov@mail.ru</td>
-              <td>0966660606</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>
-                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="No Image" />
-              </td>
-              <td>Ivan</td>
-              <td>Ivanov</td>
-              <td>ivan.ivanov@mail.ru</td>
-              <td>0966660606</td>
-              <td><button id="edit">Edit</button></td>
-              <td><button id="remove">Remove</button></td>
-            </tr>
-          </tbody>
+            <% for(let user of users) { %>
+              <tr>
+                <td><%= user.id %></td>
+                <td>
+                  <img src=" <%= user.image %>" alt="No Image" />
+                </td>
+                <td><%= user.first_name %></td>
+                <td><%= user.second_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.phone %></td>
+                <td><button class="edit">Edit</button></td>
+                <td><button class="remove">Remove</button></td>
+              </tr>
+            <% } %>
+         </tbody>
         </table>
       </div>
     </main>
 
   </div>
   <% include ../partials/footer %>
+
+  <% include ../partials/scripts %>
+  <script src="javascripts/users.js"></script>
 
 </body>
 </html>
