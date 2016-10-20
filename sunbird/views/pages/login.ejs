@@ -2,37 +2,42 @@
 <html lang="en">
 <head>
   <% include ../partials/head %>
-  <style>
-    h1 {
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="stylesheets/auth.css" />
 <body>
   
   <% include ../partials/header %>
 
   <div class="container">
 
-    <% include ../partials/sidebar %>
     <% include ../partials/nav %>
 
-    <main>
-      <h1>Log In</h1>
-      <form action="">
+    <main id="login">
+      <form onsubmit="return false">
+        <h1>Log In</h1>
         <label for="email-username">Email or Username</label>
-        <input id="email-username" type="text" required="true" placeholder="Enter your email or usrename" />
+        <input id="email-username"
+          type="email"
+          required="true"
+          placeholder="Enter your email or usrename"
+          v-model="user.email"/>
         <label for="password">Password</label>
-        <input id="password" type="password" required="true" placeholder="Enter your password" />
+        <input id="password"
+          type="password"
+          required="true"
+          placeholder="Enter your password"
+          v-model="user.password"/>
         <div class="controls">
-          <button>Cancel</button>
-          <button>Submit</button>
+          <button v-on:click="reset">Reset</button>
+          <button v-on:click="submit">Submit</button>
         </div>
       </form>
     </main>
-    
 
   </div>
   <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+
+  <script src="javascripts/login.js"></script>
 
 </body>
 </html>

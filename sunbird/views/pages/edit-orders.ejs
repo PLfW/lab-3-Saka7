@@ -8,34 +8,49 @@
 
   <div class="container">
 
-    <% include ../partials/admin-nav %>
     <% include ../partials/nav %>
 
-    <main>
-      <div class="new-destinations">
-        <form action="">
+    <main id="orders">
+      <div class="new-orders">
+        <form onsubmit="return false">
           <label for="user-id">User ID</label>
-          <input id="user-id" type="number" placeholder="Enter user id" />
+          <input id="user-id"
+            type="number"
+            placeholder="Enter user id"
+            v-model="currentOrder.user_id"/>
           <label for="flight-id">Flight ID</label>
-          <input id="flight-id" type="number" placeholder="Enter flight id" />
+          <input id="flight-id"
+            type="number"
+            placeholder="Enter flight id"
+            v-model="currentOrder.flight_id"/>
           <label for="applying-time">Applying Time</label>
-          <input id="applying-time" type="datetime" />
+          <input id="applying-time"
+            type="datetime"
+            v-model="currentOrder.applying_time"/>
           <label for="paying-time">Paying Time</label>
-          <input id="paying-time" type="datetime" />
+          <input id="paying-time"
+            type="datetime"
+            v-mode="currentOrder.paying_time"/>
           <label for="rejection-time">Rejection Time</label>
-          <input id="rejection-time" type="datetime" />
+          <input id="rejection-time"
+            type="datetime"
+            v-model="currentOrder.rejection_time"/>
           <label for="is-paid">Is Paid</label>
-          <input id="is-paid" type="checkbox" />
+          <input id="is-paid"
+            type="checkbox"
+            v-model="currentOrder.is_paid"/>
           <label for="is-rejected">Is Rejected</label>
-          <input id="is-rejected" type="checkbox" />
+          <input id="is-rejected"
+            type="checkbox"
+            v-model="currentOrder.is_rejected"/>
 
           <div class="controls">
-            <button id="cancel">Cancel</button>
-            <button id="submit">Submit</button>
+            <button v-on:click="reset">Reset</button>
+            <button v-on:click="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table" id="orders">
+      <div class="table orders">
         <table>
           <caption>Orders</caption>
           <thead>
@@ -53,20 +68,22 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let order of orders) { %>
-              <tr>
-                <td><%= order.id %></td>
-                <td><%= order.user_id %></td>
-                <td><%= order.flight_id %></td>
-                <td><%= order.applying_time %></td>
-                <td><%= order.paying_time %></td>
-                <td><%= order.rejection_time %></td>
-                <td><%= order.is_paid %></td>
-                <td><%= order.is_rejected %></td>
-                <td><button class="edit">Edit</button></td>
-                <td><button class="remove">Remove</button></td>
-              </tr>
-            <% } %>
+            <tr v-for="order in orders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.user_id }}</td>
+              <td>{{ order.flight_id }}</td>
+              <td>{{ order.applying_time }}</td>
+              <td>{{ order.paying_time }}</td>
+              <td>{{ order.rejection_time }}</td>
+              <td>{{ order.is_paid }}</td>
+              <td>{{ order.is_rejected }}</td>
+              <td>
+                <button class="edit" v-on:click="edit(order)">Edit</button>
+              </td>
+              <td>
+                <button class="remove" v-on:click="remove(order)">Remove</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -77,7 +94,7 @@
   <% include ../partials/footer %>
   <% include ../partials/scripts %>
 
-  <script src="javascripts/orders.js"></script>
+  <script src="javascripts/edit-orders.js"></script>
 
 </body>
 </html>

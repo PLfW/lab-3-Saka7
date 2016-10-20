@@ -8,10 +8,9 @@
 
   <div class="container">
 
-    <% include ../partials/sidebar %>
     <% include ../partials/nav %>
 
-    <main>
+    <main id="orders">
       <div class="table orders">
         <table>
           <caption>Orders</caption>
@@ -28,25 +27,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Random</td>
-              <td>Ukraine/Kiev</td>
-              <td>USA/San Francisco</td>
-              <td>2016/09/11 10:45:00</td>
-              <td>200.5$</td>
-              <td><button id="pay">Pay</button></td>
-              <td><button id="reject">Reject</button></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Random</td>
-              <td>Ukraine/Kiev</td>
-              <td>USA/San Francisco</td>
-              <td>2016/09/11 10:45:00</td>
-              <td>200.5$</td>
-              <td><button id="pay">Pay</button></td>
-              <td><button id="reject">Reject</button></td>
+            <tr v-for="order in orders">
+              <td>{{ order.id }}</td>
+              <td>{{ order.name }}</td>
+              <td>{{ order.from }}</td>
+              <td>{{ order.to }}</td>
+              <td>{{ order.deparute }}</td>
+              <td>{{ order.price }}$</td>
+              <td>
+                <button v-if="!order.is_paid">Pay</button>
+              </td>
+              <td>
+                <button v-if="!order.is_rejected">Reject</button>
+              </td>
+              <td v-if="order.is_paid">{{ order.paying_time }}</td>
+              <td v-if="order.is_rejected">{{ order.rejection_time }}</td>
             </tr>
           </tbody>
         </table>
@@ -55,6 +50,9 @@
 
   </div>
   <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+
+  <script src="javascripts/orders.js"></script>
 
 </body>
 </html>

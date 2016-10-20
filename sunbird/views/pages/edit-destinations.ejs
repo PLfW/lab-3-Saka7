@@ -8,12 +8,11 @@
 
   <div class="container">
 
-    <% include ../partials/admin-nav %>
     <% include ../partials/nav %>
 
     <main id="destinations">
       <div class="new-destinations">
-        <form onsubmit="false">
+        <form onsubmit="return false">
           <label for="country">Country</label>
           <input id="country"
             type="text"
@@ -25,12 +24,12 @@
             placeholder="Enter city"
             v-model="currentDestination.city"/>
           <div class="controls">
-            <button id="cancel">Cancel</button>
-            <button id="submit" v-on:click="submit">Submit</button>
+            <button v-on:click="reset">Reset</button>
+            <button v-on:click="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table" id="destinations">
+      <div class="table destinations">
         <table>
           <caption>Destinations</caption>
           <thead>

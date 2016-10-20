@@ -31,6 +31,7 @@ router.post('/', (req, res) => {
       res.json({message: "added"});
     })
     .catch(error => {
+      console.error(error);
       res.json(error);
     });
 });
@@ -41,6 +42,7 @@ router.put('/:id(\\d+)', (req, res) => {
       res.json({message: "saved"});
     })
     .catch(error => {
+      console.error(error);
       res.json(error);
     });
 });

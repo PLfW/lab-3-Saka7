@@ -8,33 +8,50 @@
 
   <div class="container">
 
-    <% include ../partials/admin-nav %>
     <% include ../partials/nav %>
 
-    <main>
+    <main id="users">
       <div class="new-destinations">
-        <form onsubmit="false">
+        <form onsubmit="return false">
           <label for="first-name">First Name</label>
-          <input id="first-name" type="text" placeholder="Enter first name" />
+          <input id="first-name"
+            type="text"
+            placeholder="Enter first name"
+            v-model="currentUser.first_name"/>
           <label for="second-name">Second Name</label>
-          <input id="second-name" type="text" placeholder="Enter second name" />
+          <input id="second-name"
+            type="text"
+            placeholder="Enter second name"
+            v-model="currentUser.second_name"/>
           <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Enter email" />
+          <input id="email"
+            type="email"
+            placeholder="Enter email"
+            v-model="currentUser.email"/>
           <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Enter password" />
+          <input id="password"
+            type="password"
+            placeholder="Enter password"
+            v-model="currentUser.password"/>
           <label for="phone">Phone Number</label>
-          <input id="phone" type="text" placeholder="Enter phone Number" />
+          <input id="phone"
+            type="text"
+            placeholder="Enter phone Number"
+            v-model="currentUser.phone"/>
           <label for="image">Image</label>
           <input id="image" type="file" />
           <label for="bio">Bio</label> 
-          <textarea id="bio" placeholder="Enter bio"></textarea>
+          <textarea id="bio"
+            placeholder="Enter bio"
+            v-model="currentUser.bio">
+          </textarea>
           <div class="controls">
-            <button id="cancel">Cancel</button>
-            <button id="submit">Submit</button>
+            <button v-on:click="reset">Reset</button>
+            <button v-on:click="submit">Submit</button>
           </div>
         </form>
       </div>
-      <div class="table" id="users">
+      <div class="table users">
         <table>
           <caption>Users</caption>
           <thead>
@@ -50,20 +67,22 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let user of users) { %>
-              <tr>
-                <td><%= user.id %></td>
+              <tr v-for="user in users">
+                <td>{{ user.id }}</td>
                 <td>
-                  <img src=" <%= user.image %>" alt="No Image" />
+                  <img v-bind:src="user.image" alt="No Image" />
                 </td>
-                <td><%= user.first_name %></td>
-                <td><%= user.second_name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.phone %></td>
-                <td><button class="edit">Edit</button></td>
-                <td><button class="remove">Remove</button></td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.second_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                  <button class="edit" v-on:click="edit(user)">Edit</button>
+                </td>
+                <td>
+                  <button class="remove" v-on:click="remove(user)">Remove</button>
+                </td>
               </tr>
-            <% } %>
          </tbody>
         </table>
       </div>
@@ -71,9 +90,9 @@
 
   </div>
   <% include ../partials/footer %>
-
   <% include ../partials/scripts %>
-  <script src="javascripts/users.js"></script>
+
+  <script src="javascripts/edit-users.js"></script>
 
 </body>
 </html>

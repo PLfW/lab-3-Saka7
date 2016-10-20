@@ -18,17 +18,13 @@ header {
   width: 100%;
 }
 
-header .logo img {
-  height: 128px;
-  margin: 5px 0;
-  width: 128px;
+header .title {
+  margin: auto;
 }
 
-header .title {
-  font-size: 2.5rem;
-  color: #F5F5F5;
-  text-shadow: 2px 2px 4px black;
-  margin: auto;
+header .title img {
+  height: 72px;
+  margin: 5px 0;
 }
 
 h1 {
@@ -54,12 +50,8 @@ nav {
   width: 20vw;
 }
 
-nav.flights, nav.admin-nav {
-  order: 1;
-}
-
 nav.navigation {
-  order: 3;
+  order: 2;
 }
 
 nav ul {
@@ -107,8 +99,8 @@ main {
   box-shadow: 0 0 1px 1px #212121;
   margin: 5px;
   min-height: 100vh;
-  order: 2;
-  width: 50vw;
+  order: 1;
+  width: 70vw;
 }
 
 main article {
@@ -267,16 +259,6 @@ footer {
   margin: 5px;
   padding: 12px 0;
   text-align: center;
-}
-
-@media screen and (max-width: 992px) {
-  nav.flights, nav.admin-nav {
-    display: none;
-  }
-
-  main {
-    width: 70vw;
-  }
 }
 
 @media screen and (max-width: 768px) {

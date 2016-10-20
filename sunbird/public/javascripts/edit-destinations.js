@@ -35,6 +35,9 @@ const app = new Vue({
     },
     edit: function(destination) {
       this.currentDestination = destination;
+    },
+    reset: function() {
+      this.currentDestination = {};
     }
   }
 });

@@ -48,19 +48,19 @@ class FlightRepository {
       ORDER BY f.expiration_date`;
    
     this.INSERT = `INSERT INTO flights(name, image, description, 
-        fromPoint, toPoint, expirationDate, departure, duration, price)
+        from_point, to_point, expiration_date, departure, duration, price)
         VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
     
     this.UPDATE = `UPDATE flights 
       SET name = $2,
       image = $3,
       description = $4,
-      fromPoint = $5,
-      toPoint = $6,
-      expirationDate = $7,
+      from_point = $5,
+      to_point = $6,
+      expiration_date = $7,
       departure = $8,
-      duration = &9,
-      price = $10,
+      duration = $9,
+      price = $10
       WHERE id = $1;`;
 
     this.DELETE = `
@@ -95,14 +95,14 @@ class FlightRepository {
     return db.tx(transaction => {
       return transaction.none(this.INSERT, [
         flight.name || "____",
-        flight.image || "____",
-        flight.description || "_______",
-        flight.fromPoint || 2,
-        flight.toPoint || 3,
-        flight.expirationDate || new Date().now(),
-        flight.departure || new Date().now(),
-        flight.duration || 1,
-        flight.price || 1000.0
+        flight.image,
+        flight.description,
+        flight.from_point,
+        flight.to_point,
+        flight.expiration_date || new Date(),
+        flight.departure || new Date(),
+        flight.duration || 0,
+        flight.price || 0.1
       ]);
     });
   }
@@ -110,18 +110,20 @@ class FlightRepository {
   save(id, flight) {
     if(!id) throw new Error("id must be supplied");
 
+    console.log(JSON.stringify(flight));
+
     return db.tx(transaction => {
-      return db.none(this.UPDATE, [
+      return transaction.none(this.UPDATE, [
         id,
         flight.name || "____",
-        flight.image || "____",
-        flight.description || "_______",
-        flight.fromPoint || 2,
-        flight.toPoint || 3,
-        flight.expirationDate || new Date().now(),
-        flight.departure || new Date().now(),
-        flight.duration || 1,
-        flight.price || 1000.0
+        flight.image,
+        flight.description,
+        flight.from_point,
+        flight.to_point,
+        flight.expiration_date || new Date(),
+        flight.departure || new Date(),
+        flight.duration || 0,
+        flight.price || 0.1
       ]);
     });
   }
