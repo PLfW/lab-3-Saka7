@@ -26,6 +26,16 @@ router.get('/:id(\\d+)', (req, res) => {
     });
 });
 
+router.get('/:id(\\d+)/orders', (req, res) => {
+  userRepository.getOrderByUserId(req.params.id)
+   .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
+
 router.get('/:name(\\w+)', (req, res) => {
   userRepository.findByName(req.params.name)
    .then(user => {

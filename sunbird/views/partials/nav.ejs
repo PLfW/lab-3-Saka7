@@ -1,36 +1,49 @@
 <nav class="navigation">
   <ul>
-    <% if (!isAuthorized) {%>
-      <% if (page != "login") { %>
-        <li><a href="/login">Log In</a></li>
-      <% } %>
-      <% if (page != "signup") { %>
-        <li><a href="/signup">Sign Up</a></li>
-      <% } %>
-    <% } else { %>
-      <li><a href="/logout">Log Out</a></li>
-      <%if (page != "account") { %>
-        <li><a href="/account">Account</a></li>
-      <% } %>
-    <% } %>
-    <%if (page != "flights") { %>
-      <li><a href="/flights">Flights</a></li>
-    <% } %>
-    <%if (page != "orders") { %>
-      <li><a href="/orders">Orders</a></li>
-    <% } %>
-    
-    <%if (page != "edit-users") { %>
-      <li><a href="/edit-users">Edit Users</a></li>
-    <% } %>
-    <%if (page != "edit-destinations") { %>
-      <li><a href="/edit-destinations">Edit Destinations</a></li>
-    <% } %>
-    <%if (page != "edit-orders") { %>
-      <li><a href="/edit-orders">Edit Orders</a></li>
-    <% } %>
-    <%if (page != "edit-flights") { %>
-      <li><a href="/edit-flights">Edit Flights</a></li>
-    <% } %>
   </ul>
+  <script>
+
+    const ALL = ["login", "signup"];
+    const AUTHENTICATED = ["logout", "account", "flights", "orders"];
+    const ADMIN = AUTHENTICATED.concat(["edit-users", "edit-destinations",
+      "edit-orders", "edit-flights"]);
+    const ROUTES = {all: ALL, authenticated: AUTHENTICATED, admin: ADMIN};
+
+    let state = "all";
+    let token = window.sessionStorage.token;
+
+    if(token) {
+      state = "authenticated";
+      let base64Url = token.split('.')[1];
+      let base64 = base64Url.replace('-', '+').replace('_', '/');
+      let user = JSON.parse(window.atob(base64));
+      if(user.type == "ADMIN") {
+        state = 'admin';
+      }
+    }
+
+    let ul = document.getElementsByTagName('ul')[0];
+
+    ROUTES[state].forEach(route => {
+      let li = document.createElement("li");
+      let a = document.createElement("a");
+      if(route != "logout") {
+        a.href = "/" + route;
+      } else {
+        a.id = 'logout';
+      }
+      a.innerHTML = route.toUpperCase();
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    let logout = document.getElementById('logout');
+    if(logout) {
+      logout.onclick = function() {
+        window.sessionStorage.removeItem('token');
+        window.location.href = "/";
+      };
+    }
+
+  </script>
 </nav>

@@ -1,4 +1,4 @@
-const BASE_URL = `api/user//orders/verbose`;
+const BASE_URL = `api/users/$id/orders/verbose`;
 
 const app = new Vue({
   el: '#orders',

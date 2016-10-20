@@ -1,4 +1,5 @@
 const db = require('./connection');
+const passwordHash = require('password-hash');
 
 class UserRepository {
 
@@ -61,12 +62,12 @@ class UserRepository {
       return transaction.none(this.INSERT, [
         user.type || "CUSTOMER",
         user.first_name || "____",
-        user.second_name || "____",
+        user.second_name,
         user.email || "_______",
-        user.password || "******",
-        user.phone || "__________",
-        user.image || "____",
-        user.bio || "____"
+        passwordHash.generate(user.password || "******"),
+        user.phone,
+        user.image,
+        user.bio
       ]);
     });
   }
@@ -79,12 +80,12 @@ class UserRepository {
         id,
         user.type || "CUSTOMER",
         user.first_name || "____",
-        user.second_name || "____",
+        user.second_name,
         user.email || "_______",
-        user.password || "******",
-        user.phone || "__________",
-        user.image || "____",
-        user.bio || "____"
+        passwordHash.generate(user.password || "******"),
+        user.phone,
+        user.image,
+        user.bio
       ]);
     });
   }

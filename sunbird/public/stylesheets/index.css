@@ -1,0 +1,37 @@
+#slogan {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/banner.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: #CFD8DC;
+}
+#slogan h1 {
+  margin-top: 24px;
+  font-size: 4rem;
+  color: #212121;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#slogan img {
+  width: 80%;
+  border-radius: 4px;
+}
+#slogan a {
+  text-decoration: none;
+  color: white;
+}
+#slogan button {
+  padding: 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#slogan button:hover a{
+  color: #212121;
+}
+#slogan a:hover, a:focus, a:active {
+  text-decoration: none;
+}
