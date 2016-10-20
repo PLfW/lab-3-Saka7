@@ -17,6 +17,22 @@ class UserRepository {
       WHERE email = $1;`;
 
     this.FIND_ALL = `SELECT * FROM users;`; 
+
+    this.GET_ORDERS = 
+    `SELECT 
+      o.id,
+      f.name,
+      df.country || ' ' || df.city AS "from",
+      dt.country || ' ' || dt.city AS "to",
+      f.departure,
+      f.price,
+      o.is_paid,
+      o.is_rejected
+    FROM users AS u
+    JOIN orders AS o ON u.id = o.user_id
+    JOIN flights AS f ON f.id = o.flight_id
+    JOIN destinations AS df ON f.from_point = df.id
+    JOIN destinations AS dt ON f.to_point = dt.id`;
     
     this.INSERT = `INSERT INTO users(type, first_name, second_name,
       email, password, phone, image, bio)
@@ -55,6 +71,10 @@ class UserRepository {
 
   findByEmail(email) {
     return db.any(this.FIND_BY_EMAIL, email);
+  }
+
+  getOrdersByUserId(id) {
+    return db.any(this.GET_ORDERS, id);
   }
 
   add(user) {

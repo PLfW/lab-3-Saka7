@@ -1,3 +1,11 @@
+div {
+  margin-right: 4px;
+}
+
+input[type="number"] {
+  width: 52px;
+}
+
 .flights .card {
   display: flex;
   flex-direction: column;
@@ -30,6 +38,7 @@
 }
 
 .flights .description {
+  width: 100%;
   margin-top: 10px;
   text-align: justify;
   max-height: 400px;
@@ -49,4 +58,20 @@
   color: orange;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.filters form {
+  background-color: #DDD;
+  border-radius: 3px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#price {
+  display: flex;
+  flex-direction: row;
 }

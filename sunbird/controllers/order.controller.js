@@ -47,6 +47,28 @@ router.put('/:id(\\d+)', (req, res) => {
     });
 });
 
+router.put('/:id(\\d+)/pay', (req, res) => {
+  orderRepository.pay(req.params.id)
+    .then(() => {
+      res.json({message: "saved"});
+    })
+    .catch(error => {
+      console.error(error);
+      res.json(error);
+    });
+});
+
+router.put('/:id(\\d+)/reject', (req, res) => {
+  orderRepository.reject(req.params.id)
+    .then(() => {
+      res.json({message: "saved"});
+    })
+    .catch(error => {
+      console.error(error);
+      res.json(error);
+    });
+});
+
 router.delete('/:id(\\d+)', (req, res) => {
   orderRepository.delete(req.params.id)
     .then(() => {

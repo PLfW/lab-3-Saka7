@@ -6,17 +6,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.render('pages/login', {
-    page: "login",
-    isAuthorized: false
-  });
+  res.render('pages/login');
 });
 
 router.get('/signup', (req, res) => {
-  res.render('pages/signup', {
-    page: "signup",
-    isAuthorized: false
-  });
+  res.render('pages/signup');
 });
 
 router.get('/logout', (req, res) => {
@@ -24,59 +18,35 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/account', (req, res) => {
-  res.render('pages/account', {
-    page: "account",
-    isAuthorized: false
-  });
+  res.render('pages/account');
 });
 
 router.get('/orders', (req, res) => {
-  res.render('pages/orders', {
-    page: "orders",
-    isAuthorized: false
-  });
+  res.render('pages/orders');
 });
 
 router.get('/flights', (req, res) => {
-  res.render('pages/flights', {
-    page: "flights",
-    isAuthorized: false
-  });
+  res.render('pages/flights');
 });
 
 router.get('/flight?:id', (req, res) => {
-  res.render('pages/flight', {
-    page: "flight",
-    isAuthorized: false
-  });
+  res.render('pages/flight');
 });
 
 router.get('/edit-users', (req, res) => {
-  res.render('pages/edit-users', {
-    page: "edit-users",
-    isAuthorized: false
-  });
+  res.render('pages/edit-users');
 });
 
 router.get('/edit-destinations', (req, res) => {
-  res.render('pages/edit-destinations', {
-    page: "edit-destinations",
-    isAuthorized: false,
-  });
+  res.render('pages/edit-destinations');
 });
 
 router.get('/edit-flights', (req, res) => {
-  res.render('pages/edit-flights', {
-    page: "edit-flights",
-    isAuthorized: false
-  });
+  res.render('pages/edit-flights');
 });
 
 router.get('/edit-orders', (req, res) => {
-  res.render('pages/edit-orders', {
-    page: "edit-orders",
-    isAuthorized: false
-  });
+  res.render('pages/edit-orders');
 })
 
 module.exports = router;

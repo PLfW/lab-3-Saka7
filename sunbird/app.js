@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const favicon = require('serve-favicon');
 
 const config = require('./config');
 
@@ -19,6 +20,7 @@ const ErrorHandler = require('./middlewares/errorHandler.middleware');
 
 const app = express();
 
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.set('secret', config.get('jwt:secret'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));

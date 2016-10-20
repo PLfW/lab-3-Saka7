@@ -12,6 +12,52 @@
     <% include ../partials/nav %>
 
     <main id="flights">
+      <div class="filters">
+        <form onsubmit="return false">
+          <div>
+            <label for="from-country">From</label>
+            <select id="from-country">
+              <option value="ukraine">Ukraine</option>
+              <option value="germany">Germany</option>
+            </select>
+          </div>
+          <div>
+            <label for="to-country">To</label>
+            <select id="to-country">
+              <option value="ukraine">Ukraine</option>
+              <option value="germany">Germany</option>
+            </select>
+          </div>
+          <div>
+            <label for="from-city">From</label>
+            <select id="from-city">
+              <option value="ukraine">Ukraine</option>
+              <option value="germany">Germany</option>
+            </select>
+          </div>
+          <div>
+            <label for="to-city">To</label>
+            <select id="to-city">
+              <option value="ukraine">Ukraine</option>
+              <option value="germany">Germany</option>
+            </select>
+          </div>
+          <div>
+            <label for="departures">Departues</label> 
+            <input id="departues" type="date" />
+          </div>
+          <div>
+            <label>from</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label>to</label>
+            <input type="number" />
+          </div>
+          <button v-on:click="filter">Filter</button>
+        </form>
+      </div>
+
       <div class="flights">
         <div class="card"
           v-on:click="open(flight.id)"

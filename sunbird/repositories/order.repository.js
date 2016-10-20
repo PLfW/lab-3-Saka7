@@ -25,6 +25,19 @@ class OrderRepository {
       is_rejected = $8
       WHERE id = $1`;
 
+    this.PAY = `
+      UPDATE orders
+      SET
+        is_paid = true,
+        is_rejected = false
+      WHERE id = $1;`;
+    this.REJECT = `
+      UPDATE orders
+      SET
+        is_rejected = true,
+        is_paid = false
+      WHERE id = $1;`;
+
     this.DELETE = `DELETE FROM orders WHERE id = $1`;
   }
 
@@ -71,6 +84,26 @@ class OrderRepository {
         order.is_paid,
         order.is_rejected
       ]);
+    });
+  }
+
+  pay(id) {
+    if(!id) {
+      throw new Error("order id must be specified");
+    }
+
+    return db.tx(transaction => {
+      return transaction.none(this.PAY, [id]);
+    });
+  }
+
+  reject(id) {
+    if(!id) {
+      throw new Error("order id must be specified");
+    }
+
+    return db.tx(transaction => {
+      return transaction.none(this.REJECT, [id]);
     });
   }
 

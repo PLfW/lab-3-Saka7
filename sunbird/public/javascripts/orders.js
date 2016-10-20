@@ -1,44 +1,44 @@
-const BASE_URL = `api/users/$id/orders/verbose`;
+let id = getDataFromToken(window.sessionStorage.token).id;
+
+const BASE_URL = `api/users/${id}/orders/verbose`;
+
+const headers = {
+  "x-access-token": window.sessionStorage.token
+};
 
 const app = new Vue({
   el: '#orders',
   data: {
     orders: [],
-    currentOrder: {}
+    is_paid: false,
+    is_rejected: false
   },
   methods: {
     getOrdersData: function() {
-      this.$http.get(BASE_URL).then(orders => {
-        this.orders = orders.body;
-        console.log(JSON.stringify(this.orders));
-      }, (error) => {console.error(error)});
+      this.$http.get(BASE_URL, {"headers": headers})
+        .then(orders => {
+          this.orders = orders.body;
+        }, (error) => {
+          console.error(error);
+        });
     },
-    submit: function() {
-        if(!this.currentOrder.id) {
-          this.$http.post(BASE_URL, this.currentOrder).then(response => {
-            this.getOrdersData();
-          },
-          error => {console.error(error)});
-        } else {
-          this.$http.put(BASE_URL + this.currentOrder.id,
-            this.currentOrder).then(response => {
-              this.getOrdersData();
-          },
-          error => {console.error(error)});
-        }
-    },
-    remove: function(order) {
-      this.$http.delete(BASE_URL + order.id).then(
-        response => {
+    pay: function(order) {
+      order.is_paid = true;
+      this.$http.put(`/api/orders/${order.id}/pay`, null, {"headers": headers})
+        .then(() => {
           this.getOrdersData();
-        },
-        error => {console.error(error)});
+        }, (error) => {
+          console.error(error);
+        });
     },
-    edit: function(order) {
-      this.currentOrder = order;
-    },
-    reset: function() {
-      this.currentOrder = {};
+    reject: function(order) {
+      order.is_rejected = true;
+      this.$http.put(`/api/orders/${order.id}/reject`, null, {"headers": headers})
+        .then(() => {
+          this.getOrdersData();
+        }, (error) => {
+          console.error(error);
+        });
     }
   }
 });

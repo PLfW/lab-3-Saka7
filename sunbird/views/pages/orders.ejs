@@ -32,16 +32,22 @@
               <td>{{ order.name }}</td>
               <td>{{ order.from }}</td>
               <td>{{ order.to }}</td>
-              <td>{{ order.deparute }}</td>
+              <td>{{ order.departure }}</td>
               <td>{{ order.price }}$</td>
               <td>
-                <button v-if="!order.is_paid">Pay</button>
+                <button v-if="!order.is_paid" 
+                  v-on:click="pay(order)">
+                  Pay
+                </button>
+                <span v-if="order.is_paid">PAID</span>
               </td>
               <td>
-                <button v-if="!order.is_rejected">Reject</button>
+                <button v-if="!order.is_rejected"
+                  v-on:click="reject(order)">
+                  Reject
+                </button>
+                <span v-if="order.is_rejected">REJECTED</span>
               </td>
-              <td v-if="order.is_paid">{{ order.paying_time }}</td>
-              <td v-if="order.is_rejected">{{ order.rejection_time }}</td>
             </tr>
           </tbody>
         </table>

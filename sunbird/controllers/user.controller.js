@@ -26,12 +26,13 @@ router.get('/:id(\\d+)', (req, res) => {
     });
 });
 
-router.get('/:id(\\d+)/orders', (req, res) => {
-  userRepository.getOrderByUserId(req.params.id)
+router.get('/:id(\\d+)/orders/verbose', (req, res) => {
+  userRepository.getOrdersByUserId(req.params.id)
    .then(user => {
       res.json(user);
     })
     .catch(error => {
+      console.error(error);
       res.json(error);
     });
 });
