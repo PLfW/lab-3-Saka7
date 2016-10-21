@@ -12,7 +12,7 @@
     <% include ../partials/nav %>
 
     <main id="signup">
-      <form onsubmit="return false">
+      <form class="card" onsubmit="return false">
         <h1>Sign Up</h1>
         <label for="email">Email*</label>
         <input id="email"
@@ -29,11 +29,12 @@
         <label for="second-name">Second Name</label>
         <input id="second-name"
           type="text"
+          required="true" 
           placeholder="Enter your second name"
           v-model="user.second_name"/>
         <label for="phone">Phone</label>
         <input id="phone"
-          type="numher"
+          type="number"
           placeholder="Enter your phone number"
           v-model="user.phone"/>
         <label for="password">Password*</label>
@@ -48,6 +49,9 @@
           required="true"
           placeholder="Confirm your password"
           v-model="confirmed_password"/>
+        <div class="error" v-if="error != null">
+          {{error.body.error}}
+        </div>
         <div class="controls">
           <button v-on:click="reset">Reset</button>
           <button v-on:click="submit">Submit</button>

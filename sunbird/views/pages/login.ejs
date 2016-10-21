@@ -12,13 +12,13 @@
     <% include ../partials/nav %>
 
     <main id="login">
-      <form onsubmit="return false">
+      <form class="card" onsubmit="return false">
         <h1>Log In</h1>
-        <label for="email-username">Email or Username</label>
-        <input id="email-username"
+        <label for="email">Email</label>
+        <input id="email"
           type="email"
           required="true"
-          placeholder="Enter your email or usrename"
+          placeholder="Enter your email"
           v-model="user.email"/>
         <label for="password">Password</label>
         <input id="password"
@@ -26,6 +26,9 @@
           required="true"
           placeholder="Enter your password"
           v-model="user.password"/>
+        <div class="error" v-if="error != null">
+          {{error.body.error}}
+        </div>
         <div class="controls">
           <button v-on:click="reset">Reset</button>
           <button v-on:click="submit">Submit</button>
