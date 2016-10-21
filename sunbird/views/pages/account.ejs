@@ -2,26 +2,7 @@
 <html lang="en">
 <head>
   <% include ../partials/head %>
-  <style>
-    .user-details .image img {
-      max-width: 240px;
-      max-height: 240px;
-    }
-    .info span {
-      padding: 8px;
-      margin: 4px;
-      display: block;
-      border-bottom: 1px solid grey;
-    }
-
-    .info span#bio {
-      text-align: justify;
-    }
-
-    .warn {
-      background-color: #FF5252;
-    }
-  </style>
+  <link rel="stylesheet" href="stylesheets/account.css" />
 <body>
   
   <% include ../partials/header %>
@@ -35,11 +16,11 @@
           <img v-bind:src="user.image" alt="No Image" />
         </div>
         <div class="info">
-          <span>{{ user.first_name }}</span>
-          <span>{{ user.second_name }}</span>
-          <span>{{ user.email }}</span>
-          <span>{{ user.phone }}</span>
-          <span id="bio">{{ user.bio }}</span>
+          <span><b>First Name:</b> {{ user.first_name }}</span>
+          <span><b>Second Name:</b> {{ user.second_name }}</span>
+          <span><b>Email:</b> {{ user.email }}</span>
+          <span><b>Phone:</b> {{ user.phone }}</span>
+          <span id="bio"><b>Bio:</b> {{ user.bio }}</span>
         </div>
       </div>
       <div class="new-destinations">

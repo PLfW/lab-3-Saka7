@@ -16,6 +16,7 @@ const app = new Vue({
       this.$http.get(BASE_URL + userId, {"headers": headers})
         .then(user => {
           this.user = user.body[0];
+          // this.$route.router.go('/');
         }, (error) => {
           console.error(error);
         });
