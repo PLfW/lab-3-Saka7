@@ -1,5 +1,17 @@
-div {
+.row {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input, select {
+  margin-right: 8px;
+}
+
+label {
   margin-right: 4px;
+  width: auto;
 }
 
 input[type="number"] {
@@ -74,4 +86,8 @@ input[type="number"] {
 #price {
   display: flex;
   flex-direction: row;
+}
+
+#departures {
+  max-width: 240px;
 }

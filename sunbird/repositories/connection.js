@@ -11,10 +11,11 @@ const pgp = require('pg-promise')({
 );
 
 const CONNECTION = {
-  port: config.get('database:port'),
-  database: config.get('database:name'),
+  host: process.env.OPENSHIFT_POSTGRESQL_DB_HOST || 'localhost',
+  port: process.env.OPENSHIFT_POSTGRESQL_DB_PORT || config.get('database:port'),
+  database: 'adminpkd4qyv' || config.get('database:name'),
   user: config.get('database:user'),
-  password: config.get('database:password')
+  password: '6Psycdi1jgRW' || config.get('database:password')
 };
 
 const db = pgp(CONNECTION);

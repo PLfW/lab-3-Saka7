@@ -7,8 +7,9 @@ const http = require('http');
 
 app.set('secret', config.get('jwt:secret'));
 
-const port = normalizePort(config.get('port'));
+const port = normalizePort(process.env.OPENSHIFT_NODEJS_PORT || config.get('port'));
 app.set('port', port);
+app.set('host', process.env.OPENSHIFT_NODEJS_HOST);
 
 const server = http.createServer(app);
 

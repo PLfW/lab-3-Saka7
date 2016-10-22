@@ -14,45 +14,54 @@
     <main id="flights">
       <div class="filters">
         <form onsubmit="return false">
-          <div>
+          <div class="row">
             <label for="from-country">From</label>
             <select id="from-country">
-              <option value="ukraine">Ukraine</option>
-              <option value="germany">Germany</option>
+              <option
+                v-for="country in countries"
+                v-bind:value="country.from"
+                v-model="fromCountry">
+                {{ country.from }}
+              </option>
             </select>
-          </div>
-          <div>
             <label for="to-country">To</label>
             <select id="to-country">
-              <option value="ukraine">Ukraine</option>
-              <option value="germany">Germany</option>
+              <option v-for="country in countries"
+                v-bind:value="country.to"
+                v-model="toCountry">
+                {{ country.to }}
+              </option>
             </select>
-          </div>
-          <div>
             <label for="from-city">From</label>
             <select id="from-city">
-              <option value="ukraine">Ukraine</option>
-              <option value="germany">Germany</option>
+              <option v-for="city in cities"
+                v-bind:value="city.from"
+                v-model="fromCity">
+                {{ city.from }}
+              </option>
             </select>
-          </div>
-          <div>
             <label for="to-city">To</label>
             <select id="to-city">
-              <option value="ukraine">Ukraine</option>
-              <option value="germany">Germany</option>
+              <option v-for="city in cities"
+                v-bind:value="city.to"
+                v-model="toCity">
+                {{ city.to }}
+              </option>
             </select>
           </div>
-          <div>
+          <div class="row">
             <label for="departures">Departues</label> 
-            <input id="departues" type="date" />
-          </div>
-          <div>
-            <label>from</label>
-            <input type="number" />
-          </div>
-          <div>
-            <label>to</label>
-            <input type="number" />
+            <input id="departures"
+              type="date"
+              v-model="departures"/>
+            <label for="form-price">price </label>
+            <input id="from-price"
+              type="number"
+              v-model="minPrice"/>
+            <label for="to-price">to</label>
+            <input id="to-price"
+              type="number"
+              v-model="maxPrice"/>
           </div>
           <button v-on:click="filter">Filter</button>
         </form>
